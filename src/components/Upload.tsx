@@ -7,14 +7,14 @@ type Props = React.ComponentProps<"input"> & {
 export function Upload({ filename=null, ...rest}: Props){
     return (
         <div className="flex flex-col gap-2">
-            <legend className="uppercase text-xxs text-gray-500">
+            <legend className="uppercase text-xxs text-gray-200">
                 Comprovante
             </legend>
 
             <div className="w-full flex h-12 items-center rounded-lg border border-gray-200 bg-white text-sm text-gray-900 overflow-hidden">
                 <input type="file" id="upload" className="hidden" {...rest} />
 
-                <span className="text-sm text-gray-500 flex-1 px-4">
+                <span className="text-sm text-gray-200 flex-1 px-4">
                     {filename ?? "Selecione o arquivo"}
                 </span>
 

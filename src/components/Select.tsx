@@ -8,7 +8,7 @@ export function Select({ legend, children, ...rest }: Props) {
 
             {
                 legend &&
-                <label className="uppercase text-xxs text-gray-500">
+                <label className="uppercase text-xxs text-gray-200">
                     {legend}
                 </label>
             }

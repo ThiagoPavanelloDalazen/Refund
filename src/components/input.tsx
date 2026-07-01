@@ -8,7 +8,7 @@ export function Input({ legend, type="text", ...rest }: Props) {
 
             {
                 legend &&
-                <legend className="uppercase text-xxs text-gray-500">
+                <legend className="uppercase text-xxs text-gray-200">
                     {legend}
                 </legend>
             }
