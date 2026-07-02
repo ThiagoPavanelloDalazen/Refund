@@ -16,3 +16,23 @@
   /* Para eu ter o valor de rem o calculo é 10%16=0.625, o 10 é o valor x, nesse caso é o valor que queiro chegar */
   --text-xxs: 0.625rem;
 }
+
+select {
+  appearance: none;
+  background-image: url("../assets/chevron-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 1.25rem auto;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e4ece9;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; 
+}
