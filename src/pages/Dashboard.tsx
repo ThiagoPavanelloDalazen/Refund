@@ -3,18 +3,9 @@ import { Input } from "../components/input"
 import { useState } from "react";
 import { RefundItem } from "../components/RefundItem";
 import type { RefundItemProps } from "../components/RefundItem";
-import { CATEGORIES } from "../utils/categories";
 import searchSvg from "../assets/search.svg"
-import { formatCurrency } from "../utils/formatCurrency";
 import { Pagination } from "../components/Pagination";
-
-const REFUND_EXAMPLE = {
-    id: "123",
-    name: "Thiago",
-    category: "Transport",
-    amount: formatCurrency(34.5),
-    categoryImg: CATEGORIES["transport"].icon
-}
+import { getRefunds } from "../data/refunds";
 
 
 export function Dashboard() {
@@ -22,7 +13,7 @@ export function Dashboard() {
     const [, setName] = useState("");
     const [page, setPage] = useState(1);
     const [totalOfPages] = useState(10);
-    const [refunds] = useState<RefundItemProps[]>([REFUND_EXAMPLE]);
+    const [refunds] = useState<RefundItemProps[]>(getRefunds());
 
 
     function fetchRefunds(e: React.FormEvent) {
@@ -61,7 +52,7 @@ export function Dashboard() {
             <div className="my-6 flex flex-col gap-4 max-h-[342px] overflow-y-scroll">
                 {
                     refunds.map((item) => (
-                        <RefundItem key={item.id} data={item} href={`/refund/${item.id}`}/>
+                        <RefundItem key={item.id} data={item} to={`/refund/${item.id}`}/>
                     ))
                 }
                 

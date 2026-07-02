@@ -2,6 +2,7 @@ import { Input } from "../components/input"
 import { Button } from "../components/Button"
 import { useState } from "react"
 import type { FormEvent } from "react"
+import { Link } from "react-router-dom"
 
 export function SignUp() {
 
@@ -33,7 +34,7 @@ export function SignUp() {
 
             <Button type="submit" isLoading={isLoading}>Cadastrar</Button>
 
-            <a href="/" className="text-sm font-semibold text-gray-900 mt-10 mb-4 text-center hover:text-green-800 transition easy-linear">Já tenho uma conta?</a>
+            <Link to="/" className="text-sm font-semibold text-gray-900 mt-10 mb-4 text-center hover:text-green-800 transition easy-linear">Já tenho uma conta?</Link>
             
         </form>
     )

@@ -1,21 +1,13 @@
-import { BrowserRouter } from "react-router-dom";
 import { AuthRoutes } from "./AuthRoutes";
 import { EmployeeRoutes } from "./EmployeeRoutes";
 import { ManagerRoutes } from "./ManagerRoutes";
 import { Loading } from "../components/Loading";
+import { useAuth } from "../contexts/AuthContext";
 
 const isLoading = false;
 
-//const session = undefined;
-
-const session = {
-  user: {
-    role: "manager"
-  }
-}
-
-
 export function Routes() {
+  const { session } = useAuth()
 
   function getRoutesComponent(){
     switch(session?.user.role){
@@ -32,9 +24,5 @@ export function Routes() {
     return <Loading />
   }
 
-  return (
-    <BrowserRouter>
-      {getRoutesComponent()}
-    </BrowserRouter>
-  );
+  return getRoutesComponent();
 }

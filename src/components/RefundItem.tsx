@@ -1,3 +1,5 @@
+import { Link, type LinkProps } from "react-router-dom"
+
 export type RefundItemProps = {
     id: string
     name: string
@@ -6,13 +8,13 @@ export type RefundItemProps = {
     categoryImg: string
 }
 
-type Props = React.ComponentProps<"a"> & {
+type Props = LinkProps & {
     data: RefundItemProps
 };
 
 export function RefundItem({ data, ...rest }: Props) {
     return (
-        <a className="flex items-center gap-3 hover:bg-green-100/5 cursor-pointer rounded-md p-2"
+        <Link className="flex items-center gap-3 hover:bg-green-100/5 cursor-pointer rounded-md p-2"
         
         {...rest}>
             <img src={data.categoryImg} alt="icone da categoria" className="w-8 h-8" />
@@ -26,6 +28,6 @@ export function RefundItem({ data, ...rest }: Props) {
                 <small className="font-normal text-gray-200">R$</small>
                 {data.amount}
             </span>
-        </a>
+        </Link>
     )
 }

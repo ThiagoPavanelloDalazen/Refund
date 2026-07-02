@@ -1,11 +1,14 @@
 import { Input } from "../components/input"
 import { Select } from "../components/Select"
 import { CATEGORIES, CATEGORIES_KEYS } from "../utils/categories"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Upload } from "../components/Upload"
 import { Button } from "../components/Button"
 import { useNavigate, useParams } from "react-router-dom"
 import fileSvg from "../assets/file.svg"
+import { getRefundById } from "../data/refunds"
+import { formatCurrency } from "../utils/formatCurrency"
+import { Loading } from "../components/Loading"
 
 export function Refund() {
 
@@ -13,9 +16,26 @@ export function Refund() {
     const [amount, setAmount] = useState("")
     const [category, setCategory] = useState("")
     const [isLoading, setIsLoading] = useState(false)
+    const [isFetching, setIsFetching] = useState(false)
     const [filename, setFilename] = useState<File | null>(null)
     const navigate = useNavigate()
     const params = useParams<{id: string}>()
+
+    useEffect(() => {
+        if (!params.id) return
+
+        setIsFetching(true)
+
+        const refund = getRefundById(params.id)
+
+        if (refund) {
+            setName(refund.name)
+            setCategory(refund.category)
+            setAmount(formatCurrency(refund.amount))
+        }
+
+        setIsFetching(false)
+    }, [params.id])
 
     function onSubmit(e: React.FormEvent){
         e.preventDefault()
@@ -26,6 +46,10 @@ export function Refund() {
 
         setIsLoading(true)
         navigate("/confirm", {state: { fromSubmit: true}})
+    }
+
+    if (isFetching) {
+        return <Loading />
     }
 
     return (
